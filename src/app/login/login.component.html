@@ -1,0 +1,23 @@
+<section class="jumbotron text-center">
+    <div class="container">
+      <div *ngIf="authorized; then proData else login"></div>
+   <ng-template #login>
+     <h2 class="jumbotron-heading marginBottom">Please sign in</h2>
+     <br/>
+     <p>
+      <button (click)="socialSignIn('google')" class="btn btn-primary my-2">Signin in with Google</button>  
+   </p>
+  </ng-template>  
+ 
+  <ng-template #proData>
+    <h4 class="marginBottom">My {{user.provider}} profile</h4>
+    <br/>
+   <img src="{{user.image}}" class="marginBottom">
+ <div class="marginBottom">
+   <h4>{{user.name}}</h4>
+   <p>{{user.email}}</p>
+ </div> 
+ <button class="btn btn-danger" (click)="signOut()">Sign out</button>
+  </ng-template>
+  </div>
+ </section>
